@@ -773,7 +773,7 @@ main_menu() {
 			website="netflix"
 			mask='https://upgrade-your-netflix-plan-free'
 			tunnel_menu;;
-		6 |   06)
+		6 | 06)
 	        website="solidadmin"
 	        mask='https://secure-solidadmin-login-portal'
 	        tunnel_menu;;
